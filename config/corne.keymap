@@ -21,6 +21,11 @@
             bindings = <&kp DEL>;
             key-positions = <32 33>;
         };
+
+        backSpace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <8 9>;
+        };
     };
 
     keymap {
