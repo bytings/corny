@@ -26,6 +26,11 @@
             bindings = <&kp BACKSPACE>;
             key-positions = <8 9>;
         };
+
+        softOff {
+            bindings = <&soft_off>;
+            key-positions = <0 11 35 38>;
+        };
     };
 
     keymap {
