@@ -9,13 +9,6 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    behaviors {
-        soft_off: soft_off {
-            label = "SoftOff";
-            compatible = "zmk,behavior-soft-off";
-        };
-    };
-
     combos {
         compatible = "zmk,combos";
 
