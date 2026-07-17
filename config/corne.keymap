@@ -34,12 +34,22 @@
 
         Layer3Left {
             bindings = <&mo 3>;
-            key-positions = <37 25>;
+            key-positions = <37 26 25>;
         };
 
         Leyer3Right {
             bindings = <&mo 3>;
-            key-positions = <40 34>;
+            key-positions = <40 33 34>;
+        };
+
+        Layer2Left {
+            bindings = <&mo 2>;
+            key-positions = <37 27 28>;
+        };
+
+        Leyer1Right {
+            bindings = <&mo 1>;
+            key-positions = <40 34 35>;
         };
     };
 
@@ -73,7 +83,7 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB         &trans        &trans        &trans          &kp UP_ARROW  &trans             &kp SLASH        &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp MINUS  &kp BSPC
+&kp TAB         &kp AT_SIGN   &trans        &trans          &kp UP_ARROW  &trans             &kp SLASH        &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp MINUS  &kp BSPC
 &kp LEFT_SHIFT  &bt BT_SEL 0  &bt BT_SEL 1  &kp LEFT_ARROW  &kp DOWN      &kp RIGHT_ARROW    &kp ASTERISK     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS   &kp DELETE
 &bt BT_CLR      &bt BT_PRV    &bt BT_NXT    &trans          &trans        &kp LEFT_ALT       &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &trans     &trans
                                             &kp LGUI        &trans        &kp SPACE          &kp RET          &trans           &kp RALT
