@@ -19,11 +19,11 @@ jobs:
         working-directory: zmk
 
       - name: Build firmware (Corne left)
-        run: west build -p -d build/left -b nice_nano_v2 -s app -- -DSHIELD=corne_left
+        run: west build -p -d build/left -b nice_nano -s app -- -DSHIELD=corne_left
         working-directory: zmk
 
       - name: Build firmware (Corne right)
-        run: west build -p -d build/right -b nice_nano_v2 -s app -- -DSHIELD=corne_right
+        run: west build -p -d build/right -b nice_nano -s app -- -DSHIELD=corne_right
         working-directory: zmk
 
       - name: Upload firmware
