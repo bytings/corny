@@ -19,21 +19,17 @@ jobs:
         working-directory: zmk
 
       - name: Build firmware (Corne left)
-        run: west build -p -b nice_nano -- -DSHIELD=corne_left
+        run: west build -p -d build/left -b nice_nano_v2 -s app -- -DSHIELD=corne_left
         working-directory: zmk
-
-      - name: Upload firmware left
-        uses: actions/upload-artifact@v4
-        with:
-          name: corne_left
-          path: zmk/build/zephyr/*.uf2
 
       - name: Build firmware (Corne right)
-        run: west build -p -b nice_nano -- -DSHIELD=corne_right
+        run: west build -p -d build/right -b nice_nano_v2 -s app -- -DSHIELD=corne_right
         working-directory: zmk
 
-      - name: Upload firmware right
+      - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
-          name: corne_right
-          path: zmk/build/zephyr/*.uf2
+          name: firmware
+          path: |
+            zmk/build/left/zephyr/*.uf2
+            zmk/build/right/zephyr/*.uf2
