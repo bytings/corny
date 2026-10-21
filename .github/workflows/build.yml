@@ -8,14 +8,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up ZMK
-        uses: zmkfirmware/zmk@main
+      - name: Set up west
+        run: |
+          pip3 install west
+          west init -l app
+          west update
 
-      - name: Build firmware
+      - name: Build firmware (Corne left)
         run: west build -p -b nice_nano -- -DSHIELD=corne_left
 
-      - name: Upload firmware
+      - name: Upload firmware left
         uses: actions/upload-artifact@v4
         with:
-          name: firmware
-          path: build/**/*.uf2
+          name: corne_left
+          path: build/zephyr/*.uf2
+
+      - name: Build firmware (Corne right)
+        run: west build -p -b nice_nano -- -DSHIELD=corne_right
+
+      - name: Upload firmware right
+        uses: actions/upload-artifact@v4
+        with:
+          name: corne_right
+          path: build/zephyr/*.uf2
