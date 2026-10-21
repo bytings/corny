@@ -1,3 +1,6 @@
+name: Build ZMK firmware
+on: [push, pull_request, workflow_dispatch]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -8,7 +11,7 @@ jobs:
       - name: Clone ZMK
         run: git clone https://github.com/zmkfirmware/zmk.git zmk
 
-      - name: Init west
+      - name: Set up west
         run: |
           pip3 install west
           west init -l app
@@ -23,4 +26,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: corne_left
+          path: zmk/build/zephyr/*.uf2
+
+      - name: Build firmware (Corne right)
+        run: west build -p -b nice_nano -- -DSHIELD=corne_right
+        working-directory: zmk
+
+      - name: Upload firmware right
+        uses: actions/upload-artifact@v4
+        with:
+          name: corne_right
           path: zmk/build/zephyr/*.uf2
