@@ -3,33 +3,20 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      shield: corne
+      board: nice_nano
+
+  upload:
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your config
+      - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Clone ZMK
-        run: git clone https://github.com/zmkfirmware/zmk.git zmk
-
-      - name: Set up west
-        run: |
-          pip3 install west
-          west init -l app
-          west update
-        working-directory: zmk
-
-      - name: Build firmware (Corne left)
-        run: west build -p -d build/left -b nice_nano -s app -- -DSHIELD=corne_left
-        working-directory: zmk
-
-      - name: Build firmware (Corne right)
-        run: west build -p -d build/right -b nice_nano -s app -- -DSHIELD=corne_right
-        working-directory: zmk
 
       - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
           name: firmware
-          path: |
-            zmk/build/left/zephyr/*.uf2
-            zmk/build/right/zephyr/*.uf2
+          path: build/**/*.uf2
